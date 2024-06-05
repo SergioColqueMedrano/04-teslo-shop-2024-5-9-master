@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: '%s - Juego | RTS',
     default: 'Home - Juego | RTS'
   },
-  description: "Una tienda virtual de productos",
+  description: "Un juego virtual de tiendas",
 };
 
 export default function RootLayout({

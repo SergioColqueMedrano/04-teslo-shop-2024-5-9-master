@@ -105,7 +105,7 @@ const MessageDashboard = ({ userId }: { userId: string }) => {
               <div><strong>Asunto:</strong> {message.subject}</div>
               <div><strong>Contenido:</strong> {message.content}</div>
               {message.resources && <div><strong>Recursos:</strong> {message.resources}</div>}
-              <div><strong>Sent At:</strong> {new Date(message.createdAt).toLocaleString()}</div>
+              <div><strong>Enviado:</strong> {new Date(message.createdAt).toLocaleString()}</div>
             </div>
           ))}
         </div>

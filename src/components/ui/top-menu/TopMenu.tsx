@@ -4,24 +4,29 @@ import { titleFont } from "@/config/fonts";
 import { useCartStore, useUIStore } from "@/store";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
+import { IoCartOutline, IoMailOutline, IoSearchOutline } from "react-icons/io5";
 
 export const TopMenu = () => {
     
     const openSideMenu = useUIStore( state => state.openSideMenu);
     const totalItemsInCart = useCartStore(state =>state.getTotalItems());
+    const [totalUnreadMessages, setTotalUnreadMessages] = useState(0);
 
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
     
         setLoaded(true);
+
+        return () => setTotalUnreadMessages(1);
       
       }
     , [])
 
     
-    
+    const handleNewMessage = () => {
+        setTotalUnreadMessages(0); // Restablecer a 0 al hacer clic en el enlace
+    };
 
     return (
     <nav className="flex px-5 justify-between items-center w-full">
@@ -32,12 +37,12 @@ export const TopMenu = () => {
             </Link>
         </div>
 
-        <div className="hidden sm:block">
+       {/* <div className="hidden sm:block">
             <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/men">Hombres</Link>
             <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/women">Mujeres</Link>
             <Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/kid">Niños</Link>
         </div>
-
+        */} 
         <div className="flex items-center">
             <Link href="/search" className="mx-2">
                 <IoSearchOutline className="w-5 h-5" />
@@ -59,6 +64,19 @@ export const TopMenu = () => {
                     <IoCartOutline className="w-5 h-5" />
                 </div>
             </Link>
+            <Link 
+    href="/chat"
+    onClick={handleNewMessage} className="mx-2">
+                    <div className="relative">
+                        {loaded && totalUnreadMessages > 0 && (
+                            <span className="fade-in absolute text-xs rounded-full px-1 font-bold -top-2 -right-2 bg-blue-700 text-white">
+                                {totalUnreadMessages}
+                            </span>
+                        )}
+
+                        <IoMailOutline className="w-5 h-5" />
+                    </div>
+                </Link>
             <button 
                 onClick={ openSideMenu }
                 className="m-2 p-2 rounded-md transition-all hover:bg-gray-100">

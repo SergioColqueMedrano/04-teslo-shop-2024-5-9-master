@@ -28,15 +28,15 @@ export default async function Home({ searchParams }: Props) {
   return (
     <>
     <Title 
-    title="Tienda"
-    subtitle="Todos los productos"
+    title="Mapa"
+    subtitle="En desarrollo"
     className="mb-2"
     />
 
 
-    <ProductGrid 
+    {/*<ProductGrid 
       products={ products }
-    />
+  />*/}
 
     <Pagination totalPages={ totalPages } />
     </>
