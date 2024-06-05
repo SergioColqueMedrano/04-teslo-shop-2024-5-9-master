@@ -71,6 +71,10 @@ model User {
   address UserAddress?
   // Relaciones
   Order Order[]
+
+  
+  messagesSent     Message[] @relation("SentMessages")
+  messagesReceived Message[] @relation("ReceivedMessages")
 }
 
 model Country {
@@ -149,4 +153,16 @@ model Counter {
   id    String  @id @default(uuid())
   count Int     @default(0)
   color String
+}
+
+model Message {
+  id          String   @id @default(cuid())
+  subject     String
+  content     String
+  createdAt   DateTime @default(now())
+  resources   String?
+  senderId    String
+  receiverId  String
+  sender      User     @relation("SentMessages", fields: [senderId], references: [id])
+  receiver    User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
 }
