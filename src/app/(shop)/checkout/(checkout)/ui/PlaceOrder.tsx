@@ -130,7 +130,7 @@ export const PlaceOrder = () => {
             })
           }
         >
-          Colocar orden
+          Guardar Partida
         </button>
       </div>
     </div>

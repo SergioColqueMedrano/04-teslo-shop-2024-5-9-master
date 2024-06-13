@@ -60,8 +60,8 @@ export default async function OrdersPage() {
                   ) :
                   <>
                     
-                <IoCardOutline className="text-red-800" />
-                <span className='mx-2 text-red-800'>No Pagada</span>
+                <IoCardOutline className="text-green-800" />
+                <span className='mx-2 text-green-800'>Parida Guardada</span>
 
                   </>
                   

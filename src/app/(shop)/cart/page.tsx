@@ -25,7 +25,7 @@ export default function CartPage() {
           </div>
 
           <div className="absolute top-10 right-10 bg-white rounded-xl shadow-xl p-7 h-[300px]">
-              <h2 className="text-2xl mb-2">Resumen de orden</h2>
+              <h2 className="text-2xl mb-2">Unidades en Progreso</h2>
               
               <OrderSummary />
                   

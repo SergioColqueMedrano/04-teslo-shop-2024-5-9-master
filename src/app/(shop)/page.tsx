@@ -29,14 +29,14 @@ export default async function Home({ searchParams }: Props) {
     <>
     <Title 
     title="Mapa"
-    subtitle="En desarrollo"
+    subtitle="AV. AVELLANEDA"
     className="mb-2"
     />
 
 
-    {/*<ProductGrid 
+    <ProductGrid 
       products={ products }
-  />*/}
+  />
 
     <Pagination totalPages={ totalPages } />
     </>
