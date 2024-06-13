@@ -10,7 +10,7 @@ export default function Empty() {
         <h1 className="text-xl font-semibold">Tu carrito esta vacio</h1>
 
         <Link 
-        href='/'
+        href='/gender/men'
         className="text-blue-500 mt-2 text-4xl"
         >
           Regresar

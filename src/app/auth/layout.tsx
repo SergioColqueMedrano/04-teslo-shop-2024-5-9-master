@@ -7,7 +7,7 @@ export default async function ShopLayout({children}: {
   
   const session = await auth();
   if (session?.user) {
-    redirect('/');
+    redirect('/gender/men');
   }
   
   return (

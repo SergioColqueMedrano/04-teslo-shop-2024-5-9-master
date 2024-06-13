@@ -10,7 +10,7 @@ export default async function MessagesPage() {
   
   if( !session?.user) {
     //redirect('/auth/login?returnTo=/perfil');
-    redirect('/');
+    redirect('/gender/men');
   }
 
   return <MessageDashboard userId={(session.user.id)} />;
