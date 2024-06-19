@@ -8,6 +8,8 @@ import { Title } from "@/components";
 import clsx from "clsx";
 import { IoCartOutline } from "react-icons/io5";
 import { initialData } from "@/seed/seed";
+import Link from "next/link";
+import { titleFont } from "@/config/fonts";
 
 const productsInCart = [
   initialData.products[0],
@@ -52,15 +54,15 @@ export default async function OrdersByIdPage({ params }: Props) {
               clsx(
                 "flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5",
                 {
-                  "bg-red-500": !order!.isPaid,
-                  'bg-green-700': order!.isPaid,
+                  "bg-green-700": !order!.isPaid,
+                  'bg-red-500': order!.isPaid,
                 }
               )
             }>
               <IoCartOutline size={30} />
 
               <span className="mx-2">
-                {order?.isPaid ? "Pagado" : "Pendiente"}
+                {order?.isPaid ? "Pagado" : "Partida Guardada"}
               </span>
 
             </div>
@@ -145,22 +147,25 @@ export default async function OrdersByIdPage({ params }: Props) {
               clsx(
                 "flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5",
                 {
-                  "bg-red-500": !order!.isPaid,
-                  'bg-green-700': order!.isPaid,
+                  "bg-green-700": !order!.isPaid,
+                  'bg-red-500': order!.isPaid,
                 }
               )
             }>
               <IoCartOutline size={30} />
 
               <span className="mx-2">
-                {order?.isPaid ? "Pagado" : "Pendiente"}
+                {order?.isPaid ? "Pagado" : "Partida Guardada"}
               </span>
 
             </div>
             <div>
-            <h1>Send a WhatsApp Message</h1>
-            <PaymentForm/>
-            </div>
+            <Link href="/">
+                <button className="btn-primary my-5">
+                  Entrar a la Partida
+                </button>
+            </Link>
+        </div>
           
         </div>
       </div>

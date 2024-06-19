@@ -15,6 +15,7 @@ export const ProductGridItem = ({ product }:Props) => {
 
     return (
     <div className="rounded-md overflow-hidden fade-in">
+        {/*<Link className="m-2 p-2 rounded-md transition-all hover:bg-gray-100" href="/gender/women">Construir</Link>*/}
         <Link href={ `/product/${ product.slug }` }>
             <Image 
                 src={`/products/${ displayImage }`}
@@ -22,20 +23,8 @@ export const ProductGridItem = ({ product }:Props) => {
                 className="w-full object-cover rounded"
                 width={ 500 }
                 height={ 500 }
-                onMouseEnter={ () => setDisplayImage( product.images[1] ) }
-                onMouseLeave={ () => setDisplayImage( product.images[0] ) }
             />
-
         </Link>
-        
-        <div className="p-4 flex flex-col">
-        <Link 
-            className="hover:text-blue-500"
-            href={ `/product/${ product.slug }` }>
-            { product.title }
-        </Link>
-        <span className='font-bold'>${ product.price }</span>
-        </div>
 
     </div>
 

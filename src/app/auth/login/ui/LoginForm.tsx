@@ -18,7 +18,7 @@ export const LoginForm = () => {
   
   useEffect(() => {
     if( state === 'Success' ){
-      window.location.replace('/');
+      window.location.replace('/gender/men');
     }
   }, [state]);
   

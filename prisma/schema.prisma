@@ -75,6 +75,13 @@ model User {
   
   messagesSent     Message[] @relation("SentMessages")
   messagesReceived Message[] @relation("ReceivedMessages")
+
+ 
+  
+  resources      Int             @default(0)
+  buildings      UserBuilding[]
+  workerCount    Int             @default(0)
+  intance Instance[]
 }
 
 model Country {
@@ -165,4 +172,37 @@ model Message {
   receiverId  String
   sender      User     @relation("SentMessages", fields: [senderId], references: [id])
   receiver    User     @relation("ReceivedMessages", fields: [receiverId], references: [id])
+}
+
+
+// schema.prisma
+
+
+model Building {
+  id             Int             @id @default(autoincrement())
+  name           String
+  cost           Int
+  benefits       String
+  unlocked       Boolean         @default(false)
+  isResourceExtractor Boolean   @default(false)
+  users          UserBuilding[]
+}
+
+model UserBuilding {
+  id             Int             @id @default(autoincrement())
+  userId         String
+  user           User            @relation(fields: [userId], references: [id])
+  buildingId     Int
+  building       Building        @relation(fields: [buildingId], references: [id])
+  location       Json
+  status         String
+  workers        Int             @default(0)
+  resourceExtracted Int          @default(0)
+}
+
+model Instance {
+  id             Int             @id @default(autoincrement())
+  userId         String
+  user           User            @relation(fields: [userId], references: [id])
+  location       Json
 }

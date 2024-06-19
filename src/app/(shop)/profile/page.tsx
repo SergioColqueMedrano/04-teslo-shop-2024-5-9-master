@@ -8,7 +8,7 @@ export default async function Profilepage() {
   
   if( !session?.user) {
     //redirect('/auth/login?returnTo=/perfil');
-    redirect('/');
+    redirect('/gender/men');
   }
 
   return(
