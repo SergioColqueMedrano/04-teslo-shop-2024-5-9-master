@@ -49,10 +49,10 @@ export const ProductsInCart = () => {
                     </Link>
                   
                   <p>{ product.price }</p>
-                  {/*<QuantitySelector 
+                  <QuantitySelector 
                   quantity={ product.quantity }
                   onQuantityChanged={quantity => updateProductQuantity(product, quantity)}
-                  />*/}
+                  />
                   <button 
                   onClick={() => removeProduct(product)}
                   className="underline mt-3">
