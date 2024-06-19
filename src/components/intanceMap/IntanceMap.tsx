@@ -1,4 +1,6 @@
 // components/InstanceMap.tsx
+//nuevo
+
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
