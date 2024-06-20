@@ -12,9 +12,10 @@ export default class WorldRenderer extends sprite {
         this.terrain = terrain;
     }
 
-    handleInteraction(x: number, y: number, event: MouseEvent) {
+    handleInteraction(x: number, y: number, event: MouseEvent): boolean {
         this.pos.x = x;
         this.pos.y = y;
+        return true; // Devuelve true para cumplir con la firma esperada
     }
 
     draw(ctx: CanvasRenderingContext2D) {

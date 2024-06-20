@@ -36,7 +36,7 @@ const WorldRendererComponent: React.FC = () => {
           animate: true,
           smoothing: false,
           fps: 60,
-          onUpdate: updateGame,
+          onUpdate: updateGame.bind(this),
           backgroundColor: '#0000FF',
         });
 

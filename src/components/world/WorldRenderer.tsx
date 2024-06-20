@@ -1,17 +1,15 @@
 'use client'
 
 import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import WorldRenderer from '@/renderers/world-renderer';
 import { canvas } from 'zcanvas';
-import { AppDispatch, RootState } from './store';
+import WorldRenderer from '@/renderers/world-renderer';// Importa tu store de zustand
+import { useWorldStore } from '@/stores/useWorldStore';
 
 const MIN_AMOUNT_OF_TILES = 9; // minimum amount of tiles visible on the dominant axis of the screen
 const renderer = new WorldRenderer();
 
 const WorldRendererComponent: React.FC = () => {
-  const dispatch = useDispatch<AppDispatch>();
-  const terrain = useSelector((state: RootState) => state.world.terrain);
+  const terrain = useWorldStore(state => state.terrain); // Obtiene el estado del terreno desde zustand
   const canvasContainerRef = useRef<HTMLDivElement>(null);
   const handlers = useRef<Array<{ event: string, callback: () => void }>>([]);
   const zcanvasInstance = useRef<any>(null);
@@ -25,7 +23,7 @@ const WorldRendererComponent: React.FC = () => {
       smoothing: false,
       fps: 60,
       onUpdate: updateGame,
-      backgroundColor: '#0000FF',
+      backgroundColor: '#0066ff',
     });
 
     // Attach event handlers
