@@ -3,6 +3,7 @@ export const revalidate = 60;
 
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Pagination, ProductGrid, Title } from "@/components";
+import WorldRendererComponent from "@/components/world/WorldRenderer";
 import { redirect } from "next/navigation";
 
 interface Props {
@@ -19,9 +20,9 @@ export default async function Home({ searchParams }: Props) {
 
   const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({ page });
   
-  redirect('/gender/men');
+  
   if (products.length === 0) {
-    redirect('/gender/men');
+    redirect('/');
   }
 
   
@@ -32,13 +33,8 @@ export default async function Home({ searchParams }: Props) {
     subtitle="AV. AVELLANEDA"
     className="mb-2"
     />
+    <WorldRendererComponent/>
 
-
-    <ProductGrid 
-      products={ products }
-  />
-
-    <Pagination totalPages={ totalPages } />
-    </>
+   </>
   );
 }
