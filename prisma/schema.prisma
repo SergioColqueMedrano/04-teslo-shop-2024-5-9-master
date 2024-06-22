@@ -167,7 +167,7 @@ model Message {
   subject     String
   content     String
   createdAt   DateTime @default(now())
-  resources   String?
+  resources   Int      @default(1000)
   senderId    String
   receiverId  String
   sender      User     @relation("SentMessages", fields: [senderId], references: [id])

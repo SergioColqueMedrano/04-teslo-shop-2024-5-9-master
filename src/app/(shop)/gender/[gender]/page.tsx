@@ -1,6 +1,7 @@
 export const revalidate = 60;
 
 import { getPaginatedProductsWithImages } from "@/actions";
+import { getResources } from "@/actions/get-resources";
 import { Pagination, ProductGrid, Title } from "@/components";
 import { initialData } from "@/seed/seed";
 import { Gender } from "@prisma/client";
@@ -28,11 +29,12 @@ export default async function gender({ params, searchParams }: Props) {
   if (products.length === 0) {
     redirect(`/gender/${ gender }`);
   }
+  const resources = await getResources();
 
   const labels: Record<string, string> = {
-    'men': 'para hombres',
-    'women': 'para mujeres',
-    'kid': 'para niños',
+    'men': 'Principal',
+    'women': 'para Edificios',
+    'kid': 'para Unidades',
     'unisex': 'para todos'
   }
   //if ( id === 'kids'){
@@ -42,8 +44,8 @@ export default async function gender({ params, searchParams }: Props) {
   return (
     <>
     <Title 
-    title={`Recursos ${ labels[gender] }`}
-    subtitle="Todos los productos"
+    title={`Menu ${ labels[gender] }`}
+    subtitle={`Recursos = ${resources}`}
     className="mb-2"
     />
     <ProductGrid 
