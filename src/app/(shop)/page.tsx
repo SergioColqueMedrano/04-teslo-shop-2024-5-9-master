@@ -20,9 +20,9 @@ export default async function Home({ searchParams }: Props) {
 
   const { products, currentPage, totalPages } = await getPaginatedProductsWithImages({ page });
   
-  
+  redirect('/gender/men');
   if (products.length === 0) {
-    redirect('/');
+    redirect('/gender/men');
   }
 
   
@@ -33,10 +33,11 @@ export default async function Home({ searchParams }: Props) {
     subtitle="AV. AVELLANEDA"
     className="mb-2"
     />
-    <div className="flex justify-center max-w-[1280px] w-full font-normal mr-4">
+    {/*<div className="flex justify-center max-w-[1280px] w-full font-normal mr-4">
     <WorldRendererComponent/>
-    </div>
-    
+    </div>*/}
+      
+      <ProductGrid  products={ products }/>
 
    </>
   );

@@ -160,7 +160,7 @@ export default async function OrdersByIdPage({ params }: Props) {
 
             </div>
             <div>
-            <Link href="/">
+            <Link href="/gender/men">
                 <button className="btn-primary my-5">
                   Entrar a la Partida
                 </button>
