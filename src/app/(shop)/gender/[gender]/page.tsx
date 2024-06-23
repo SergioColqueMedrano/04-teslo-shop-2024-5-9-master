@@ -2,7 +2,9 @@ export const revalidate = 60;
 
 import { getPaginatedProductsWithImages } from "@/actions";
 import { getResources } from "@/actions/get-resources";
-import { Pagination, ProductGrid, Title } from "@/components";
+import { auth } from "@/auth.config";
+import { MessageDashboard, Pagination, ProductGrid, Title } from "@/components";
+import TotalRecursos from "@/components/chat/totalRecursos";
 import { initialData } from "@/seed/seed";
 import { Gender } from "@prisma/client";
 import { redirect } from "next/navigation";
@@ -18,6 +20,13 @@ interface Props {
 }
 
 export default async function gender({ params, searchParams }: Props) {
+
+  const session = await auth();
+
+  if( !session?.user) {
+    //redirect('/auth/login?returnTo=/perfil');
+    redirect('/gender/men');
+  }
 
   const { gender } = params;
   
@@ -45,9 +54,10 @@ export default async function gender({ params, searchParams }: Props) {
     <>
     <Title 
     title={`Menu ${ labels[gender] }`}
-    subtitle={`Recursos = ${resources}`}
+    subtitle=''
     className="mb-2"
     />
+    <TotalRecursos userId={(session.user.id)}  />
     <ProductGrid 
       products={ products }
     />
