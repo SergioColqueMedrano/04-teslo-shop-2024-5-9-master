@@ -9,7 +9,8 @@ interface Props {
 }
 
 export const ImageSelectionBoard = ({ products }: Props) => {
-  const initialBoard = Array(5).fill(null).map(() => Array(4).fill(''));
+  // Inicializar el tablero con una matriz de 4x5
+  const initialBoard = Array(4).fill(null).map(() => Array(5).fill(''));
   const [selectedImages, setSelectedImages] = useState<string[][]>(initialBoard);
   const [currentProductIndex, setCurrentProductIndex] = useState(0);
 
@@ -32,13 +33,13 @@ export const ImageSelectionBoard = ({ products }: Props) => {
 
   return (
     <div className="flex justify-center items-center p-5">
-      <div className="grid grid-cols-4 grid-rows-5 gap-2">
+      <div className="grid grid-cols-5 grid-rows-4 gap-2">
         {selectedImages.map((row, rowIndex) =>
           row.map((image, colIndex) => (
             <div
               key={`${rowIndex}_${colIndex}`}
               className={`w-24 h-24 flex justify-center items-center cursor-pointer transition-all
-                ${(rowIndex + colIndex) % 2 === 0 ? 'bg-green-600' : 'bg-green-400'}
+                ${(rowIndex + colIndex) % 2 === 0 ? 'bg-green-400' : 'bg-green-400'}
                 hover:bg-gray-300`}
               onClick={() => handleCellClick(rowIndex, colIndex)}
             >
@@ -58,4 +59,3 @@ export const ImageSelectionBoard = ({ products }: Props) => {
     </div>
   );
 };
-
