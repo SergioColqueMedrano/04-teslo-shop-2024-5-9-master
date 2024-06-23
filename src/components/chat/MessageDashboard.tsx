@@ -13,7 +13,7 @@ interface Message {
   createdAt: string;
   sender: User;
   receiver: User;
-  resources?: string;
+  resources?: number;
 }
 
 const MessageDashboard = ({ userId }: { userId: string }) => {
@@ -22,7 +22,7 @@ const MessageDashboard = ({ userId }: { userId: string }) => {
   const [receiverUsername, setReceiverUsername] = useState('');
   const [subject, setSubject] = useState('');
   const [content, setContent] = useState('');
-  const [resources, setResources] = useState('');
+  const [resources, setResources] = useState<number | undefined>(1000);
 
   useEffect(() => {
     fetch(`/api/messages?userId=${userId}`)
@@ -52,7 +52,7 @@ const MessageDashboard = ({ userId }: { userId: string }) => {
       setReceiverUsername('');
       setSubject('');
       setContent('');
-      setResources('');
+      setResources(1000);
     } else {
       console.error('Error sending message');
     }
@@ -87,10 +87,13 @@ const MessageDashboard = ({ userId }: { userId: string }) => {
             className="border p-2 rounded mb-2 w-full h-32"
           ></textarea>
           <input
-            type="text"
+            type="number"
             placeholder="Recursos (optional)"
             value={resources}
-            onChange={(e) => setResources(e.target.value)}
+            onChange={(e) => {
+              const parsedValue = parseInt(e.target.value);
+              setResources(isNaN(parsedValue) ? undefined : parsedValue);
+            }}
             className="border p-2 rounded mb-2 w-full"
           />
           <button className="bg-blue-500 text-white px-4 py-2 rounded" onClick={sendMessage}>
