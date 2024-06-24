@@ -12,18 +12,16 @@ export const StockLabel = ({ slug }: Props) =>{
   const [stock, setStock] = useState(0);
   const [isLoding, setIsLoading] = useState(true);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const getStock = async() =>{
+    const inStock = await getStockBySlug(slug);
+    setStock(inStock);
+    setIsLoading(false);
+  }
+
   useEffect(() =>{
     getStock();
-  }, []);
-
-const getStock = async() =>{
-  const inStock = await getStockBySlug(slug);
-  setStock(inStock);
-  setIsLoading(false);
-}
-
-
-
+  }, [getStock]);
 
   return (
     <>
@@ -37,9 +35,6 @@ const getStock = async() =>{
       </h1>
       )
     }
-     
-     
     </>
-    
-    )
+  )
 }
