@@ -4,7 +4,7 @@ import { titleFont } from "@/config/fonts";
 import { useCartStore, useUIStore } from "@/store";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { IoCartOutline, IoMailOutline, IoSearchOutline } from "react-icons/io5";
+import { IoCartOutline, IoGameControllerOutline, IoMailOutline, IoSearchOutline } from "react-icons/io5";
 
 export const TopMenu = () => {
     
@@ -61,7 +61,7 @@ export const TopMenu = () => {
                         )
                     }
                     
-                    <IoCartOutline className="w-5 h-5" />
+                    <IoGameControllerOutline className="w-5 h-5" />
                 </div>
             </Link>
             <Link 

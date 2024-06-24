@@ -53,7 +53,7 @@ export default async function ProductPage({ params }: Props) {
       
       <div className="col-span-1 md:col-span-2">
 
-        <ProductMobileSlideshow 
+        {/*<ProductMobileSlideshow 
         title={ product.title }
         images={ product.images }
         className="block md:hidden"
@@ -63,11 +63,11 @@ export default async function ProductPage({ params }: Props) {
         title={ product.title }
         images={ product.images }
         className="hidden md:block"
-        />
+        />*/}
       </div>
 
       <div className="col-span-1 px-5">
-          <StockLabel slug={ product.slug} />
+          {/*<StockLabel slug={ product.slug} />*/}
           <h1 className={ ` ${ titleFont.className } antialiased font-bold text-xl` }>
             { product.title }
           </h1>
