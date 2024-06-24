@@ -101,7 +101,7 @@ export default async function OrdersByIdPage({ params }: Props) {
 
           {/* Checkout - Resumen de orden */}
           <div className="bg-white rounded-xl shadow-xl p-7">
-            <h2 className="text-2xl mb-2">Dirección de entrega</h2>
+            {/*<h2 className="text-2xl mb-2">Dirección de entrega</h2>
             <div className="mb-10">
               <p className="text-xl">
                 {address!.firstName} {address!.lastName}
@@ -115,30 +115,30 @@ export default async function OrdersByIdPage({ params }: Props) {
               <p>{address!.phone}</p>
             </div>
 
-            {/* Divider */}
+             Divider */}
             <div className="w-full h-0.5 rounded bg-gray-200 mb-10" />
 
             <h2 className="text-2xl mb-2">Resumen de orden</h2>
 
             <div className="grid grid-cols-2">
-              <span>No. Productos</span>
+              <span>No. Unidades</span>
               <span className="text-right">
                 {order?.itemsInOrder === 1
-                  ? "1 artículo"
-                  : `${order?.itemsInOrder} artículos`}
+                  ? "1 unidad"
+                  : `${order?.itemsInOrder} unidades`}
               </span>
 
-              <span>Subtotal</span>
+              {/*<span>Subtotal</span>
               <span className="text-right">
                 {currencyFormat(order!.subTotal)}
               </span>
 
               <span>Impuestos (15%)</span>
-              <span className="text-right">{currencyFormat(order!.tax)}</span>
+              <span className="text-right">{currencyFormat(order!.tax)}</span>*/}
 
               <span className="mt-5 text-2xl">Total:</span>
               <span className="mt-5 text-2xl text-right">
-                {currencyFormat(order!.total)}
+                {currencyFormat(order!.subTotal)}
               </span>
             </div>
 
